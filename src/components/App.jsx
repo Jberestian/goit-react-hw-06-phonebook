@@ -2,14 +2,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addContact, removeContact } from 'redux/items/items-action';
 
 import { setFilter } from 'redux/filter/filter-action';
+import { getFilter } from 'redux/filter/filter-selector';
+import { getContacts } from 'redux/items/items-selector';
 
 import ContactBook from './ContactBook/ContactBook';
 import Filter from './Filter/Filter';
 import Form from './Form/Form';
 
 const App = () => {
-  const contacts = useSelector(store => store.contacts.contacts);
-  const filter = useSelector(store => store.contacts.filter);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
   const onAddContacts = ({ name, number }) => {
