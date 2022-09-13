@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
-const Filter = ({ onChange }) => {
+const Filter = ({ value, onChange }) => {
   return (
     <>
       <label htmlFor="filter">Find Contact By Name</label>
-      <input name="filter" type="text" onChange={onChange} />
+      <input value={value} name="filter" type="text" onChange={onChange} />
     </>
   );
 };

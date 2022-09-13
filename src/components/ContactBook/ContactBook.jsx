@@ -1,20 +1,27 @@
 import PropTypes from 'prop-types';
 
-import s from './contactBook.module.css';
+import style from './contactBook.module.css';
 
 const ContactBook = ({ contacts, removeContact }) => {
-  const elements = contacts.map(({ id, name, number }) => (
-    <li className={s.item} key={id}>
-      {name}: {number}
-      <button
-        onClick={() => removeContact(id)}
-        type="button"
-        className={s.button}
-      >
-        remove
-      </button>
-    </li>
-  ));
+  const elements =
+    contacts &&
+    contacts.map(({ name, number, id }) => {
+      return (
+        <li className={style.item} key={id}>
+          <p>
+            {name}: {number}
+          </p>
+          <button
+            type="button"
+            className={style.btn}
+            onClick={() => removeContact(id)}
+          >
+            Delete
+          </button>
+        </li>
+      );
+    });
+
   return <ul>{elements}</ul>;
 };
 
